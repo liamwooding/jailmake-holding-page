@@ -7,6 +7,7 @@
       .anim-container {
         font-size: 60px;
         text-align: center;
+        height: 100px;
       }
       .anim-shuffle-letter {
         width: 40px;
@@ -17,22 +18,25 @@
         position: absolute;
         display: block;
         left: 0px;
-        -webkit-transition: left 2s ease;
-        -moz-transition: left 2s ease;
-        -o-transition: left 2s ease;
-        transition: left 2s ease;
+        -webkit-transition: left 5s ease;
+        -moz-transition: left 5s ease;
+        -o-transition: left 5s ease;
+        transition: left 5s ease;
+      }
+      .anim-container:hover span {
+        left: 0px !important;
       }
       .anim-shuffle-letter span.move-left {
-        left: -50px;
+        left: -90px;
       }
       .anim-shuffle-letter span.move-right {
-        left: 50px;
+        left: 90px;
       }
       .anim-shuffle-letter span.move-abit-left {
-        left: -20px;
+        left: -50px;
       }
       .anim-shuffle-letter span.move-abit-right {
-        left: 20px;
+        left: 50px;
       }
     </style>
   </head>
@@ -56,14 +60,16 @@
       setTimeout(function () {
         setInterval(function () {
           $('.anim-shuffle-letter span').each(function (i, el) {
-            var roll = Math.random() * 6
-            if (roll < 1) $(el).addClass('move-left')
-            else if (roll < 2) $(el).addClass('move-abit-left')
-            else if (roll > 4) $(el).addClass('move-abit-right')
-            else if (roll > 5) $(el).addClass('move-right')
-            else $(el).removeClass('move-left move-right move-abit-right move-abit-left')
+            setTimeout(function () {
+              var roll = Math.random() * 6
+              if (roll < 1.25) $(el).addClass('move-left')
+              else if (roll < 2.5) $(el).addClass('move-abit-left')
+              else if (roll > 3.5) $(el).addClass('move-abit-right')
+              else if (roll > 4.75) $(el).addClass('move-right')
+              else $(el).removeClass('move-left move-right move-abit-right move-abit-left')
+            }, i * 200)
           })
-        }, 800)
+        }, 1600)
       }, 3)
     })
   </script>
